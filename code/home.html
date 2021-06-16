@@ -1,0 +1,71 @@
+
+
+{% extends "layout.html" %}
+
+{% block body %}
+<body>
+<header class="header">
+        <!-- left box for logo -->
+        <div class="left">
+            <img src="{{url_for('static', filename='SA logo white.svg')}}" style="max-width=100%;">
+            <p>Sentiment Analysis of Text-based on Tweets</p>
+        </div>
+        <!-- mid box for nav bar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/SentAnalyzer" >Sentiment Analyzer</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/policy">Policy</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+    <div class="homemain">
+        <section id="section1">
+        <div class="homecenter image">
+            <img  class="homecenterimg" src="{{url_for('static', filename='SA center logo.svg')}}" style="max-width=100%;" >
+        </div>
+        <p>Let's Get Started by Analyzing your Tweet/Text..</p>
+            <a href="/SentAnalyzer"><button class="sect1btn" type="button">GO</button></a>
+       </section>
+        <hr>
+        <section id="section2">
+            <h2>How It Works?</h2>
+            <img  class="flowchartimg" src="{{url_for('static', filename='flowchart.svg')}}" style="max-width=100%;" >
+
+           <img  class="SS1img" src="{{url_for('static', filename='SS1.png')}}" style="max-width=100%;" >
+            <img  class="SS2img" src="{{url_for('static', filename='SS2.png')}}" style="max-width=100%;" >
+        </section>
+        <hr>
+        <section id="section3">
+             <h2>Why Sentiment Analysis?</h2>
+            <div id="homelist">
+               <ul>
+                   <li>Determine the emotional tone behind a series of words, used
+                       to gain an understanding of attitudes, opinions and
+                       emotions expressed within a text/tweet.</li>
+                   <li>Know the insights of text/tweet that helps you in decision
+                       making.</li>
+                   <li>Check out the reputation of product/company by finding the
+                       sentiment of their relevant posted tweets.</li>
+               </ul>
+            </div>
+              <img id="sec3img" src="{{url_for('static', filename='sec3 img.svg')}}" style="max-width=100%;" >
+
+        </section>
+    </div>
+
+
+
+<footer class="footer">
+   <p>This application takes your Tweet/Text as input and uses this information
+       just for showing the accurate Sentiment Analysis results.
+</p>
+</footer>
+</body>
+</html>
+
+{% endblock %}

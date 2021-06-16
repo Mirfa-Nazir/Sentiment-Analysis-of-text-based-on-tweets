@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<body>
+<header class="header">
+        <!-- left box for logo -->
+        <div class="left">
+            <img src="{{url_for('static', filename='SA logo white.svg')}}" style="max-width=100%;">
+            <p>Sentiment Analysis of Text-based on Tweets</p>
+        </div>
+        <!-- mid box for nav bar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/" >Home</a></li>
+                <li><a href="/SentAnalyzer" >Sentiment Analyzer</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/policy">Policy</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+    <div id="main" class="main">
+        <div id="center img" class="center image">
+            <img  src="{{url_for('static', filename='SA center logo.svg')}}" style="max-width=100%;" >
+        </div>
+        <h2>About:</h2> 
+        <p>Now a days,On the Internet,where the number of choices is overwhelming,there is need to filter,prioritize and efficiently deliver relevant information in order to alleviate the problem of information overload.
+Besides these days,Social networks including Twitter have become one of the widely used and popular facilitators of social interactions.<br><br>Twitter users share different information and express their opinions and emotions through tweets.<br><br>This application attempts to detect the sentiment of Twitter user tweets or any text and then show results by categorizing the tweets into positive, negative and neutral just through taking tweet/text as input and applying advanced machine learning algorithms and data mining concepts to mine tweet/text..</p>
+        <a href="/"><button type="button" class="btn" id="back-btn" >Back to Home</button></a>
+    </div>
+
+<footer class="footer">
+   <p>This application takes your Tweet/Text as input and uses this information
+       just for showing the accurate Sentiment Analysis results.
+</p>
+</footer>
+</body>
+</html>
+
+{% endblock %}

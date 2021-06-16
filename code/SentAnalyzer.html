@@ -1,0 +1,138 @@
+
+
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["message"].value;
+
+  if (x == "") {
+  var popup = document.getElementById("myPopup1");
+  popup.classList.toggle("show");
+  return false;
+  }
+ if(/^[\s]+$/.test(x)){
+ var popup = document.getElementById("myPopup1");
+  popup.classList.toggle("show");
+    return false;
+  }
+
+if(/^[!~`"='’:+;(){}?|_$/&%<>*,^#-. @\s]+$/.test(x)){
+var popup = document.getElementById("myPopup2");
+  popup.classList.toggle("show");
+  return false;
+}
+
+if(/^[ 0-9 \s ]+$/.test(x)){
+ var popup = document.getElementById("myPopup3");
+  popup.classList.toggle("show");
+    return false;
+  }
+  if(/^[!~`’"=':+;(){}?|_$/&%<>*,^#-.@ 0-9\s]+$/.test(x)){
+  var popup = document.getElementById("myPopup4");
+  popup.classList.toggle("show");
+    return false;
+  }
+
+  if(/^[۔'؛:؟ّّ،_ : !۔ اًالله لّٰ ؤ لِاآث ٹ ت پ ب ظ ط ض ص ش س ژ ز ڑ ر ذ ڈ د خ ح چ جءئ ےی ھ ہ و ں ن م ل گ ک ق ف غ ع-\s]+$/.test(x)){
+var popup = document.getElementById("myPopup5");
+  popup.classList.toggle("show");
+
+    return false;
+  }
+   if(/^[0-9 ۔'؛:؟ّّ،_ : اً!۔الله لّٰ ؤ لِاآث ٹ ت پ ب ظ ط ض ص ش س ژ ز ڑ ر ذ ڈ د خ ح چ جءئ ےی ھ ہ و ں ن م ل گ ک ق ف غ ع-\s]+$/.test(x)){
+var popup = document.getElementById("myPopup5");
+  popup.classList.toggle("show");
+
+    return false;
+  }
+if(/^[\sA-Za-z!~`"=':’+;(){}?|_$/&%<>*,^#-.@ 0-9-۔'؛:؟ّّ،_ : !۔اًالله لّٰ ؤ لِاآث ٹ ت پ ب ظ ط ض ص ش س ژ ز ڑ ر ذ ڈ د خ ح چ جءئ ےی ھ ہ و ں ن م ل گ ک ق ف غ ع]+$/.test(x)){
+
+    return true;
+  }
+  else{
+var popup = document.getElementById("myPopup6");
+  popup.classList.toggle("show");
+
+  return false;
+  }
+
+}
+</script>
+
+
+{% extends "layout.html" %}
+
+{% block body %}
+<body>
+<header class="header">
+        <!-- left box for logo -->
+        <div class="left">
+            <img src="{{url_for('static', filename='SA logo white.svg')}}" style="max-width=100%;" >
+            <p>Sentiment Analysis of Text-based on Tweets</p>
+        </div>
+        <!-- mid box for nav bar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/" >Home</a></li>
+                <li><a href="/SentAnalyzer" class="active">Sentiment Analyzer</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/policy">Policy</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+    <div id="main" class="main">
+        <div id="center img" class="center image">
+            <img  src="{{url_for('static', filename='SA center logo.svg')}}" style="max-width=100%;">
+        </div>
+        <div id="sideimg" >
+            <img  src="{{url_for('static', filename='side img.svg')}}" style="max-width=100%;" >
+        </div>
+        <form name="myForm" action="{{ url_for('predict')}}" onsubmit="return validateForm()" method="POST">
+        <h3>Enter Your Tweet/Text Here:</h3>
+
+        <!--<span id="error-name"  ></span> -->
+         <!--   <div class="alert" id="alert">
+  <span class="closebtn" >&times;</span>
+  <span id="error-name"  ></span>
+</div><script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; },600 );
+  }
+}
+</script>-->
+
+    <div class="popup">
+        <button  class="popup" type="submit">
+    <span class="popuptext" id="myPopup1">Please Enter Tweet/Text  <span class="closebtn"> OK</span> </span>
+    <span class="popuptext" id="myPopup2">Also Enter english language tweet/text other than special characters <span class="closebtn"> OK</span> </span>
+    <span class="popuptext" id="myPopup3">Also Enter english language tweet/text other than numeric values <span class="closebtn"> OK</span> </span>
+    <span class="popuptext" id="myPopup4">Also Enter english language tweet/text other than numeric values and special characters <span class="closebtn"> OK</span> </span>
+    <span class="popuptext" id="myPopup5">Please Enter english language tweet/text <span class="closebtn"> OK</span> </span>
+    <span class="popuptext" id="myPopup6"> Please Re-enter tweet/text<span class="closebtn"> OK</span> </span>
+
+        </button></div>
+
+        <textarea name="message" id="" cols="70" autofocus rows="8"></textarea>
+
+       <input type="submit" class="btn" id="analyze-btn"   value="Analyze">
+        </form>
+        <a href="/"><button class="btn"  id="back-btn" type="button">Back to Home</button></a>
+    </div>
+
+<footer class="footer">
+   <p>This application takes your Tweet/Text as input and uses this information
+       just for showing the accurate Sentiment Analysis results.
+</p>
+</footer>
+</body>
+</html>
+
+{% endblock %}

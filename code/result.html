@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<body>
+<header class="header">
+        <!-- left box for logo -->
+        <div class="left">
+            <img src="{{url_for('static', filename='SA logo white.svg')}}" style="max-width=100%;" >
+            <p>Sentiment Analysis of Text-based on Tweets</p>
+        </div>
+        <!-- mid box for nav bar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/" >Home</a></li>
+                <li><a href="/SentAnalyzer" >Sentiment Analyzer</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/policy">Policy</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+    <div id="main" class="main">
+        <div id="center img" class="center image">
+            <img  src="{{url_for('static', filename='SA center logo.svg')}}" style="max-width=100%;">
+        </div>
+           <div id="sideimg">
+            <img  src="{{url_for('static', filename='side img.svg')}}" style="max-width=100%;">
+        </div>
+        <p id="resultp">Sentiment of your tweet/text is:</p>
+        <br/><br/>
+        <div>
+		
+             {% if prediction == 0%}
+            <h1 id="Negtext">Negative</h1>
+            <img class="resimg" src="{{url_for('static', filename='Negative.png')}}" style="max-width=100%;">
+            {% elif prediction == 2%}
+            <h1 id="Neuttext">Neutral</h1>
+            <img class="resimg" src="{{url_for('static', filename='Neutral.png')}}" style="max-width=100%;" >
+            {% elif prediction == 4%}
+            <h1 id="Postext">Positive</h1>
+            <img class="resimg" src="{{url_for('static', filename='Positive.png')}}" style="max-width=100%;" >
+            {% endif %}
+        
+            </div>
+        <a href="/SentAnalyzer"><button class="btn"  id="back-btn" type="button">Back</button></a>
+    </div>
+
+<footer class="footer">
+   <p>This application takes your Tweet/Text as input and uses this information
+       just for showing the accurate Sentiment Analysis results.
+</p>
+</footer>
+</body>
+</html>
+
+{% endblock %}
